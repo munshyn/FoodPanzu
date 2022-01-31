@@ -13,7 +13,7 @@ import java.util.List;
  * @author User
  */
 public class Order {
-    private ArrayList<Menu> menumirul;
+    private ArrayList<Menu> menu;
     private double totalPrice;
     private int quantity;   
 }
