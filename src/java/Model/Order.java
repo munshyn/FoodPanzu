@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,5 +13,7 @@ import java.util.List;
  * @author User
  */
 public class Order {
-    List<Menu> 
+    private ArrayList<Menu> menu;
+    private double totalPrice;
+    private int quantity;   
 }

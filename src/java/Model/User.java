@@ -5,16 +5,19 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author User
  */
 public class User {
-    String userName;
-    String name;
-    String password;
-    String email;
-    boolean isAdmin;
+    private String userName;
+    private String name;
+    private String password;
+    private String email;
+    private boolean isAdmin;
+    private ArrayList<Order> order;
 
     public User() {
     }

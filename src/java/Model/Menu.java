@@ -10,9 +10,9 @@ package Model;
  * @author User
  */
 public class Menu {
-    String fdName;
-    double price;
-    int category;
+    private String fdName;
+    private double price;
+    private int category;
 
     public Menu() {
     }
