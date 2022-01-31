@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class DBConnection {
 
-    private static final String connectionURL ="jdbc:mysql://localhost:3306/myproject";
+    private static final String connectionURL ="jdbc:mysql://localhost:3306/FoodPanzu";
     private static final String driver ="com.mysql.jdbc.Driver";
     private static final String username ="root";
     private static final String password ="";
