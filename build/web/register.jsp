@@ -13,6 +13,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
+
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">

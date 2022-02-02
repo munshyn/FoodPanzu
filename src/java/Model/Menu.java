@@ -47,7 +47,4 @@ public class Menu {
         this.category = category;
     }
     
-    
-    
-    
 }

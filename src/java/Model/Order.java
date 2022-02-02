@@ -5,7 +5,6 @@
  */
 package Model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +12,51 @@ import java.util.List;
  * @author User
  */
 public class Order {
-    private ArrayList<Menu> menu;
+    private int orderId;
+    private List<Menu> menu;
     private double totalPrice;
-    private int quantity;   
+    private int quantity;
+
+    public Order() {
+    }
+
+    public Order(int orderId, List<Menu> menu, double totalPrice, int quantity) {
+        this.orderId = orderId;
+        this.menu = menu;
+        this.totalPrice = totalPrice;
+        this.quantity = quantity;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public List<Menu> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
 }

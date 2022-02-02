@@ -16,8 +16,6 @@ public class DBConnection {
 
     
     public static Connection openConnection(){
-//    register & load db driver
-//            create a connection, pass the connection object to the caller
         try{
             Class.forName(driver);
             conn = DriverManager.getConnection(connectionURL, username, password);
@@ -26,13 +24,12 @@ public class DBConnection {
         return conn;
     }
     
-public static void closeConnection(){
+    public static void closeConnection(){
         try {
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-}    
-//    close the db connection
+    }    
     
 }

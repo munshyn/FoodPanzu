@@ -5,7 +5,7 @@
  */
 package Model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,16 +17,9 @@ public class User {
     private String password;
     private String email;
     private boolean isAdmin;
-    private ArrayList<Order> order;
+    private List<Order> order;
 
     public User() {
-    }
-
-    public User(String userName, String name, String password, String email) {
-        this.userName = userName;
-        this.name = name;
-        this.password = password;
-        this.email = email;
     }
 
     public User(String userName, String name, String password, String email, boolean isAdmin) {
@@ -75,5 +68,14 @@ public class User {
 
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
-    }    
+    }
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
+    }
+    
 }
