@@ -12,7 +12,7 @@
         <title>Register Page</title>
     </head>
     <body>
-        <jsp:include page="header.jsp" />
+        <%--<jsp:include page="header.jsp" />--%>
 
         <div class="container">
             <div class="row justify-content-center">
@@ -21,13 +21,22 @@
                         <div class="card-header">Register</div>
 
                         <div class="card-body">
-                            <form method="POST" action="">
+                            <form method="POST" action="registerController">
+                                
+                                <div class="form-group row">
+                                    <label for="username" class="col-md-4 col-form-label text-md-right">UserName</label>
+
+                                    <div class="col-md-6">
+                                        <input id="username" type="text" class="form-control" name="username" required>
+
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                                     <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                                        <input id="name" type="text" class="form-control" name="name"  required>
 
                                     </div>
                                 </div>
@@ -36,7 +45,7 @@
                                     <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control" name="email" value="" required>
+                                        <input id="email" type="email" class="form-control" name="email"  required>
 
                                     </div>
                                 </div>

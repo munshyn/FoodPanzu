@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author User
  */
-public class User {
+public class User implements Serializable {
     private String userName;
     private String name;
     private String password;
@@ -22,7 +23,7 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String name, String password, String email, boolean isAdmin) {
+    public User(String userName, String name, String email, String password, boolean isAdmin) {
         this.userName = userName;
         this.name = name;
         this.password = password;

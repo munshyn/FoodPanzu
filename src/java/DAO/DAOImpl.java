@@ -19,16 +19,16 @@ import java.util.List;
  *
  * @author User
  */
-public class DAOImpl implements DUser, DOrder, DMenu{
-    
+public class DAOImpl implements DUser, DOrder, DMenu {
+
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
-    
+
     //User DAO implementation
     @Override
     public void register(User u) {
-            try{
+        try {
             String SQL = "INSERT INTO user (username, name, email, password, isAdmin) values (?, ?, ?, ?, ?)";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
@@ -36,17 +36,36 @@ public class DAOImpl implements DUser, DOrder, DMenu{
             ps.setString(2, u.getName());
             ps.setString(3, u.getEmail());
             ps.setString(4, u.getPassword());
-            ps.setBoolean(5, false);
+            ps.setBoolean(5, u.isIsAdmin());
             ps.executeUpdate();
-            
-        }catch (Exception ex){
+
+        } catch (Exception ex) {
             ex.printStackTrace(out);
-        }    
+        }
     }
 
     @Override
     public User getUser(String un) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        User u = new User();
+        try {
+            String SQL = "SELECT * FROM user WHERE email=?";
+            conn = DBConnection.openConnection();
+            ps = conn.prepareStatement(SQL);
+            ps.setString(1, un);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                u.setUserName(rs.getString("username"));
+                u.setName(rs.getString("name"));
+                u.setEmail(rs.getString("email"));
+                u.setPassword(rs.getString("password"));
+                u.setIsAdmin(rs.getBoolean("isAdmin"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace(out);
+        }
+
+        return u;
     }
 
     @Override
@@ -100,5 +119,5 @@ public class DAOImpl implements DUser, DOrder, DMenu{
     public void updateMenu(String fdn) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

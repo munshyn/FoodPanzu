@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author User
  */
-public class Menu {
+public class Menu implements Serializable {
     private String fdName;
     private double price;
     private int category;

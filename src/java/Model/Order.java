@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author User
  */
-public class Order {
+public class Order implements Serializable {
     private int orderId;
     private List<Menu> menu;
     private double totalPrice;

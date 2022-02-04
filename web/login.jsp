@@ -11,10 +11,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
-        
+
     </head>
     <body>
-        <jsp:include page="header.jsp" />
 
         <div class="container">
             <div class="row justify-content-center">
@@ -23,14 +22,14 @@
                         <div class="card-header">Login</div>
 
                         <div class="card-body">
-                            <form method="POST" action="">
+                            <form method="POST" action="loginController">
 
 
                                 <div class="form-group row">
                                     <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control " name="email" value="" required>
+                                        <input id="email" type="email" class="form-control " name="email"  required>
 
                                     </div>
                                 </div>
@@ -50,6 +49,12 @@
                                         <button type="submit" class="btn btn-primary">
                                             Login
                                         </button>
+
+                                    </div>
+                                    <div class="col-md-8 offset-md-4">
+                                        <a href="register.jsp" class="btn btn-success">
+                                            New User?
+                                        </a>
 
                                     </div>
                                 </div>
