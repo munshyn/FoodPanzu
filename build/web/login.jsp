@@ -64,5 +64,18 @@
                 </div>
             </div>
         </div>
+
+        <div><br>
+            <form action="InsertMenuController" method="get">
+                <!--Food Code: <input type="number" name="menuCode" required><br><br>-->
+                Food Name: <input type="text" name="fdName" required><br><br>
+                Price: <input type="text" name="price" required><br><br>
+                Category: <input type="number" name="category" required><br><br>
+
+                <button type="submit" class="btn btn-primary">
+                    Add menu
+                </button>
+            </form>
+        </div>
     </body>
 </html>

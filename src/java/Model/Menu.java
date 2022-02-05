@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author User
  */
 public class Menu implements Serializable {
+    private int menuCode;
     private String fdName;
     private double price;
     private int category;
@@ -19,10 +20,25 @@ public class Menu implements Serializable {
     public Menu() {
     }
 
+    public Menu(String fdName, double price, int category, int menuCode) {
+        this.fdName = fdName;
+        this.price = price;
+        this.category = category;
+        this.menuCode = menuCode;
+    }
+    
     public Menu(String fdName, double price, int category) {
         this.fdName = fdName;
         this.price = price;
         this.category = category;
+    }
+
+    public int getMenuCode() {
+        return menuCode;
+    }
+
+    public void setMenuCode(int menuCode) {
+        this.menuCode = menuCode;
     }
 
     public String getFdName() {
