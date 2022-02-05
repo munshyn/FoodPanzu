@@ -100,7 +100,7 @@ public class DAOImpl implements DUser, DOrder, DMenu {
     public List<Menu> getAllMenu() {
         List<Menu> ul = new ArrayList<>();
         try{
-            String SQL = "SELECT * FROM menu";
+            String SQL = "SELECT * FROM menu ORDER BY category";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
             rs = ps.executeQuery();
@@ -109,8 +109,10 @@ public class DAOImpl implements DUser, DOrder, DMenu {
                 Menu u = new Menu();
                 u.setMenuCode(rs.getInt("menuCode"));
                 u.setFdName(rs.getString("fdName"));
+                u.setFdDesc(rs.getString("fdDesc"));
+                u.setFdImage(rs.getString("fdImage"));
                 u.setPrice(rs.getDouble("price"));
-                u.setCategory(rs.getInt("category"));
+                u.setCategory(rs.getString("category"));
                 ul.add(u);
             }
         }catch (Exception ex){
@@ -133,8 +135,10 @@ public class DAOImpl implements DUser, DOrder, DMenu {
             while(rs.next()){
                 u.setMenuCode(rs.getInt("menuCode"));
                 u.setFdName(rs.getString("fdName"));
+                u.setFdDesc(rs.getString("fdDesc"));
+                u.setFdImage(rs.getString("fdImage"));
                 u.setPrice(rs.getDouble("price"));
-                u.setCategory(rs.getInt("category"));
+                u.setCategory(rs.getString("category"));
             }
         }catch (Exception ex){
             ex.printStackTrace(out);
@@ -146,13 +150,15 @@ public class DAOImpl implements DUser, DOrder, DMenu {
     @Override
     public void insertMenu(Menu m) {
         try{
-            String SQL = "INSERT INTO menu (menuCode, fdName, price, category) values (?, ?, ?, ?)";
+            String SQL = "INSERT INTO menu (menuCode, fdName, fdDesc, fdImage, price, category) values (?, ?, ?, ?, ?, ?)";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
             ps.setInt(1, m.getMenuCode());
             ps.setString(2, m.getFdName());
-            ps.setDouble(3, m.getPrice());
-            ps.setInt(4, m.getCategory());
+            ps.setString(3, m.getFdDesc());
+            ps.setString(4, m.getFdImage());
+            ps.setDouble(5, m.getPrice());
+            ps.setString(6, m.getCategory());
             ps.executeUpdate();
             
         }catch (Exception ex){
@@ -177,13 +183,15 @@ public class DAOImpl implements DUser, DOrder, DMenu {
     @Override
     public void updateMenu(int mcd, Menu m) {
         try{
-            String SQL = "UPDATE menu SET fdName=?, price=?, category=? WHERE menuCode=?";
+            String SQL = "UPDATE menu SET fdName=?, fdDesc=?, fdImage=?, price=?, category=? WHERE menuCode=?";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
             ps.setString(1, m.getFdName());
-            ps.setDouble(2, m.getPrice());
-            ps.setInt(3, m.getCategory());
-            ps.setInt(4, mcd);
+            ps.setString(2, m.getFdDesc());
+            ps.setString(3, m.getFdImage());
+            ps.setDouble(4, m.getPrice());
+            ps.setString(5, m.getCategory());
+            ps.setInt(6, mcd);
             ps.executeUpdate();
             
         }catch (Exception ex){

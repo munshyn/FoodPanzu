@@ -33,6 +33,7 @@
                     <th scope="col">i</th>
                     <th scope="col">ID</th>
                     <th scope="col">Food Name</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Price</th>
                     <th scope="col">Category</th>
                     <th scope="col"></th>
@@ -47,7 +48,8 @@
                 <tr>
                     <th scope="row"><%=i%></th>
                     <td><%=ul.get(i).getMenuCode()%></td>
-                    <td><%=ul.get(i).getFdName()%></td>
+                    <td><%=ul.get(i).getFdName()%><br><img src="<%=ul.get(i).getFdImage()%>" alt="Food Image" width="200" height="200"></td>
+                    <td><%=ul.get(i).getFdDesc()%></td>
                     <td><%=ul.get(i).getPrice()%></td>
                     <td><%=ul.get(i).getCategory()%></td>
                     <td>

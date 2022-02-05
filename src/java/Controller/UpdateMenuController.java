@@ -28,10 +28,12 @@ public class UpdateMenuController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         int menuCode = Integer.parseInt(request.getParameter("menuCode"));
         String fdName = request.getParameter("fdName");
+        String fdDesc = request.getParameter("fdDesc");
+        String fdImage = request.getParameter("fdImage");
         Double price = Double.parseDouble(request.getParameter("price"));
-        int category = Integer.parseInt(request.getParameter("category"));
+        String category = request.getParameter("category");
         
-        Menu m = new Menu(fdName, price, category, menuCode);
+        Menu m = new Menu(fdName, fdDesc, fdImage, price, category);
         
         DMenu dao = new DAOImpl();
         dao.updateMenu(menuCode, m);
