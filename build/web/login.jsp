@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--<%@page include="header.jsp"%>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +13,7 @@
 
     </head>
     <body>
+
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">

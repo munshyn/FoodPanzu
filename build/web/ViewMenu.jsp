@@ -30,7 +30,7 @@
                     <legend>Update Info</legend>
                     
                     <!-- Text input-->
-                    <input type="hidden" name="id" value="${m.getMenuCode()}">
+                    <input type="hidden" name="menuCode" value="${m.getMenuCode()}">
                     
                     <div class="form-group">
                         <label class="col-md-4 control-label">Food name : </label>
@@ -38,6 +38,30 @@
                             <div class="input-group">
                                 <span class="input-group-addon"></span>
                                 <input  name="fdName" placeholder="Food Name" class="form-control"  type="text" value="${m.getFdName()}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Food Description : </label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                <input  name="fdDesc" placeholder="Food Description" class="form-control"  type="text" value="${m.getFdDesc()}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- input-->
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Food Image : </label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                <input  name="fdImage" placeholder="Food Image" class="form-control"  type="text" value="${m.getFdImage()}">
                             </div>
                         </div>
                     </div>

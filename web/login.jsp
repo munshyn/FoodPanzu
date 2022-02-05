@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--<%@page include="header.jsp"%>--%>
 <!DOCTYPE html>
 <html>
     <head>

@@ -38,11 +38,8 @@ public class logoutController extends HttpServlet {
             HttpSession session = request.getSession(false);
             session.invalidate();
             
-//            System.out.println(session.getAttribute("user"));
-
             response.sendRedirect("index.html");
 
-//        request.getRequestDispatcher("index.html").forward(request, response);
         }
     }
 

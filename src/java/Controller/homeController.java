@@ -5,12 +5,9 @@
  */
 package Controller;
 
-import DAO.DAOImpl;
-import DAO.DUser;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author User
  */
-@WebServlet(name = "loginController", urlPatterns = {"/loginController"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "homeController", urlPatterns = {"/homeController"})
+public class homeController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,25 +34,22 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        /* TODO output your page here. You may use following sample code. */
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession(true);
+            
+            User u = (User) session.getAttribute("u");
+            
+            if(session == null)
+                response.sendRedirect("index.html");
+                
+                else if(u.isIsAdmin())
+                    request.getRequestDispatcher("adminHome.jsp").forward(request, response);
+            
+                else
+                                        request.getRequestDispatcher("home.jsp").forward(request, response);
 
-        DUser dao = new DAOImpl();
-        User u = dao.getUser(email);
-
-        HttpSession session = request.getSession(true);
-
-        if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
-            session.setAttribute("u", u);
-
-            request.getRequestDispatcher("homeController").forward(request, response);
-        } else {
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            PrintWriter out = response.getWriter();
-            out.println("<font color=red>Either user name or password is wrong.</font>");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

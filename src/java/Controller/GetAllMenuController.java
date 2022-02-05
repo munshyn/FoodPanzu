@@ -31,7 +31,7 @@ public class GetAllMenuController extends HttpServlet {
         DMenu dao = new DAOImpl();
         List<Menu> ml = dao.getAllMenu();
         request.setAttribute("ml", ml);
-        request.getRequestDispatcher("ViewAllMenu.jsp").forward(request, response);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
         
     }
 
