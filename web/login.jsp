@@ -14,7 +14,7 @@
 
     </head>
     <body>
-<!-- jap -->
+        <!-- jap -->
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -67,11 +67,16 @@
 
         <div><br>
             <form action="InsertMenuController" method="get">
-                <!--Food Code: <input type="number" name="menuCode" required><br><br>-->
                 Food Name: <input type="text" name="fdName" required><br><br>
+                Food Description: <input type="text" name="fdDesc" required><br><br>
+                Food Image: <input type="text" name="fdImage" required><br><br>
                 Price: <input type="text" name="price" required><br><br>
-                Category: <input type="number" name="category" required><br><br>
-
+                Category: <select name="category">
+                    <option value="Food">Food</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Set">Set</option>
+                </select>
+                <br><br>  
                 <button type="submit" class="btn btn-primary">
                     Add menu
                 </button>
