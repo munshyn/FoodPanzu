@@ -13,6 +13,7 @@ import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -97,27 +98,97 @@ public class DAOImpl implements DUser, DOrder, DMenu {
     //Menu DAO implementation
     @Override
     public List<Menu> getAllMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Menu> ul = new ArrayList<>();
+        try{
+            String SQL = "SELECT * FROM menu";
+            conn = DBConnection.openConnection();
+            ps = conn.prepareStatement(SQL);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Menu u = new Menu();
+                u.setMenuCode(rs.getInt("menuCode"));
+                u.setFdName(rs.getString("fdName"));
+                u.setPrice(rs.getDouble("price"));
+                u.setCategory(rs.getInt("category"));
+                ul.add(u);
+            }
+        }catch (Exception ex){
+            ex.printStackTrace(out);
+        }
+        
+        return ul;
     }
 
     @Override
-    public Menu getMenu(String fdn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Menu getMenu(int mcd) {
+        Menu u = new Menu();
+        try{
+            String SQL = "SELECT * FROM Menu WHERE menuCode=?";
+            conn = DBConnection.openConnection();
+            ps = conn.prepareStatement(SQL);
+            ps.setInt(1, mcd);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                u.setMenuCode(rs.getInt("menuCode"));
+                u.setFdName(rs.getString("fdName"));
+                u.setPrice(rs.getDouble("price"));
+                u.setCategory(rs.getInt("category"));
+            }
+        }catch (Exception ex){
+            ex.printStackTrace(out);
+        }
+        
+        return u;
     }
 
     @Override
     public void insertMenu(Menu m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            String SQL = "INSERT INTO menu (menuCode, fdName, price, category) values (?, ?, ?, ?)";
+            conn = DBConnection.openConnection();
+            ps = conn.prepareStatement(SQL);
+            ps.setInt(1, m.getMenuCode());
+            ps.setString(2, m.getFdName());
+            ps.setDouble(3, m.getPrice());
+            ps.setInt(4, m.getCategory());
+            ps.executeUpdate();
+            
+        }catch (Exception ex){
+            ex.printStackTrace(out);
+        }  
     }
 
     @Override
-    public void deleteMenu(String fdn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteMenu(int mcd) {
+        try{
+            String SQL = "DELETE FROM menu WHERE menuCode=?";
+            conn = DBConnection.openConnection();
+            ps = conn.prepareStatement(SQL);
+            ps.setInt(1, mcd);
+            ps.executeUpdate();
+            
+        }catch (Exception ex){
+            ex.printStackTrace(out);
+        }
     }
 
     @Override
-    public void updateMenu(String fdn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateMenu(int mcd, Menu m) {
+        try{
+            String SQL = "UPDATE menu SET fdName=?, price=?, category=? WHERE menuCode=?";
+            conn = DBConnection.openConnection();
+            ps = conn.prepareStatement(SQL);
+            ps.setString(1, m.getFdName());
+            ps.setDouble(2, m.getPrice());
+            ps.setInt(3, m.getCategory());
+            ps.setInt(4, mcd);
+            ps.executeUpdate();
+            
+        }catch (Exception ex){
+            ex.printStackTrace(out);
+        }
     }
 
 }

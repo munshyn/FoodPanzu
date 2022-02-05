@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface DMenu {
     public List<Menu> getAllMenu();
-    public Menu getMenu(String fdn);
+    public Menu getMenu(int mcd);
     public void insertMenu(Menu m);
-    public void deleteMenu(String fdn);
-    public void updateMenu(String fdn);
+    public void deleteMenu(int mcd);
+    public void updateMenu(int mcd, Menu m);
     
 }
