@@ -46,8 +46,23 @@
                  border-radius: 10%;
             }
         </style>
+        
+         <script>
+
+            function loginFail() {
+                    alert("Login Failed. Please try again.");
+                }
+
+        </script>
     </head>
     <body>
+          <%
+            if ( request.getAttribute("loginResult") == "true") {
+             %>
+                <script>
+                loginFail();
+                </script>
+           <% }%>
 
         <div class="container">
             <div class="position-absolute glass">

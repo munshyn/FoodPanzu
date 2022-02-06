@@ -26,7 +26,7 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="home.jsp">
+                <a class="navbar-brand" href="homeController">
                     FoodPanzu
                 </a>
 
@@ -40,7 +40,7 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="home.jsp">
+                            <a class="nav-link" href="homeController">
                                 Home <span class="caret"></span>
                             </a>
                         </li>
