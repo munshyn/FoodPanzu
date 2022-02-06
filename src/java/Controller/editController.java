@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,6 +47,8 @@ public class editController extends HttpServlet {
 
             DUser dao = new DAOImpl();
             dao.updateUser(u);
+            HttpSession session = request.getSession();
+            session.setAttribute("u", u);
             response.sendRedirect("profile.jsp");
         }
     }
