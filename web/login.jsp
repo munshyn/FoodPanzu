@@ -8,78 +8,91 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!--<link href="../css/styles.css" rel="stylesheet" />-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
         <title>Login Page</title>
 
+        <style>
+            body{
+                background-image: url('https://img.wallpapersafari.com/desktop/1920/1080/41/10/o9vHAP.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .position-absolute{
+                position: absolute;
+                width: 1000px;
+                height: 271px;
+                left: 72px;
+                top: 450px;
+            }
+            
+            label{
+                color:white;
+            }
+            
+            .glass{
+                background: rgba(0,0,0,0.8);
+                 backdrop-filter: saturate(180%) blur(10px);
+                 border-radius: 10%;
+            }
+        </style>
     </head>
     <body>
 
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card mt-5" >
-                        <div class="card-header">Login</div>
-
-                        <div class="card-body">
-                            <form method="POST" action="loginController">
+            <div class="position-absolute glass">
+                <div class="text-center ">
+                    <h1 class="display-5 fw-bolder text-white mb-3 mt-3">Login</h1>
+                    <div class="gap-3 justify-content-sm-center">
+                        <form method="POST" action="loginController">
 
 
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right mb-3" for="email">E-Mail Address</label>
 
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control " name="email"  required>
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control " name="email" required>
 
-                                    </div>
                                 </div>
+                            </div>
 
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right mb-3">Password</label>
 
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control" name="password" required>
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="password" required>
 
-                                    </div>
                                 </div>
+                            </div>
 
 
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            Login
-                                        </button>
-
-                                    </div>
-                                    <div class="col-md-8 offset-md-4">
-                                        <a href="register.jsp" class="btn btn-success">
-                                            New User?
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="mb-0">
+                                    <button type="submit" class="btn btn-primary">
+                                        Login
+                                    </button>
+                                    <a href="register.jsp" class="btn btn-success">
+                                        New User?
+                                    </a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div><br>
-            <form action="InsertMenuController" method="get">
-                Food Name: <input type="text" name="fdName" required><br><br>
-                Food Description: <input type="text" name="fdDesc" required><br><br>
-                Food Image: <input type="text" name="fdImage" required><br><br>
-                Price: <input type="text" name="price" required><br><br>
-                Category: <select name="category">
-                    <option value="Food">Food</option>
-                    <option value="Drink">Drink</option>
-                    <option value="Set">Set</option>
-                </select>
-                <br><br>  
-                <button type="submit" class="btn btn-primary">
-                    Add menu
-                </button>
-            </form>
-        </div>
+
+
+
+
     </body>
 </html>
