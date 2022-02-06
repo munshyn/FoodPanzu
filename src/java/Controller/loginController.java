@@ -48,7 +48,8 @@ public class loginController extends HttpServlet {
 
         if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
             session.setAttribute("u", u);
-            
+                        session.setAttribute("loginResult", "true");
+
             request.getRequestDispatcher("/homeController").include(request, response);
         } else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
