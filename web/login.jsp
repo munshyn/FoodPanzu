@@ -35,19 +35,34 @@
                 left: 30px;
                 top: 300px;
             }
-            
+
             label{
                 color:white;
             }
-            
+
             .glass{
                 background: rgba(0,0,0,0.8);
-                 backdrop-filter: saturate(180%) blur(10px);
-                 border-radius: 10%;
+                backdrop-filter: saturate(180%) blur(10px);
+                border-radius: 10%;
             }
         </style>
+
+        <script>
+
+            function loginFail() {
+                alert("Login Failed. Please try again.");
+            }
+
+        </script>
     </head>
     <body>
+        <%
+            if (request.getAttribute("loginResult") == "true") {
+        %>
+        <script>
+            loginFail();
+        </script>
+        <% }%>
 
         <div class="container">
             <div class="position-absolute glass">
@@ -77,12 +92,12 @@
 
 
                             <div class="mb-0">
-                                    <button type="submit" class="btn btn-primary">
-                                        Login
-                                    </button>
-                                    <a href="register.jsp" class="btn btn-success">
-                                        New User?
-                                    </a>
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+                                <a href="register.jsp" class="btn btn-success">
+                                    New User?
+                                </a>
                             </div>
                         </form>
                     </div>
