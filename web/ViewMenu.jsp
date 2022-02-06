@@ -96,7 +96,7 @@
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-success" >Update</button>
-                            <a class="btn btn-primary" href="GetAllMenuController">Go back</a>
+                            <a class="btn btn-primary" href="homeController">Go back</a>
                         </div>
                     </div>
                 </fieldset>

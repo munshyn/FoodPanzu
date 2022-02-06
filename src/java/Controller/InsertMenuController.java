@@ -38,7 +38,7 @@ public class InsertMenuController extends HttpServlet {
         
         DMenu dao = new DAOImpl();
         dao.insertMenu(m);
-        response.sendRedirect("GetAllMenuController");
+        response.sendRedirect("homeController");
     }
 
 }
