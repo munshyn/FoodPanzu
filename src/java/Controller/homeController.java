@@ -46,13 +46,12 @@ public class homeController extends HttpServlet {
             request.setAttribute("ml", ml);
             
             User u = (User) session.getAttribute("u");
-            out.println(u.isIsAdmin());
             
             if(session == null)
                 response.sendRedirect("index.html");
                 
             else if(u.isIsAdmin()==true)
-                request.getRequestDispatcher("adminHome.jsp").forward(request, response);
+                request.getRequestDispatcher("managerDashboard.jsp").forward(request, response);
             
             else
                 request.getRequestDispatcher("home.jsp").forward(request, response);
