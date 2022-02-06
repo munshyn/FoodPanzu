@@ -48,8 +48,8 @@ public class loginController extends HttpServlet {
 
         if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
             session.setAttribute("u", u);
-
-            request.getRequestDispatcher("homeController").forward(request, response);
+            
+            request.getRequestDispatcher("/homeController").include(request, response);
         } else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             PrintWriter out = response.getWriter();
