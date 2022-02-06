@@ -21,7 +21,12 @@ public class User implements Serializable {
     private List<Order> order;
 
     public User() {
+        this.userName ="";
+        this.name = "";
+        this.password = "";
+        this.email = "";
     }
+    
 
     public User(String userName, String name, String email, String password, boolean isAdmin) {
         this.userName = userName;

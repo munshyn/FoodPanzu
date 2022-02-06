@@ -5,9 +5,13 @@
  */
 package Controller;
 
+import DAO.DAOImpl;
+import DAO.DMenu;
+import Model.Menu;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,19 +40,22 @@ public class homeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession(true);
+            HttpSession session = request.getSession();
+            DMenu dao = new DAOImpl();
+            List<Menu> ml = dao.getAllMenu();
+            request.setAttribute("ml", ml);
             
             User u = (User) session.getAttribute("u");
+            out.println(u.isIsAdmin());
             
             if(session == null)
                 response.sendRedirect("index.html");
                 
-                else if(u.isIsAdmin())
-                    request.getRequestDispatcher("adminHome.jsp").forward(request, response);
+            else if(u.isIsAdmin()==true)
+                request.getRequestDispatcher("adminHome.jsp").forward(request, response);
             
-                else
-                                        request.getRequestDispatcher("home.jsp").forward(request, response);
-
+            else
+                request.getRequestDispatcher("home.jsp").forward(request, response);
         }
     }
 
