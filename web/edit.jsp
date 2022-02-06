@@ -1,8 +1,7 @@
-
 <%-- 
-    Document   : Register
-    Created on : Dec 24, 2021, 10:41:45 PM
-    Author     : User
+    Document   : edit
+    Created on : Feb 7, 2022, 12:00:41 AM
+    Author     : ACER
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -53,16 +52,16 @@
         <div class="container">
             <div class="position-absolute glass">
                 <div class="text-center">
-                    <h1 class="display-5 fw-bolder text-white mb-3 mt-3">Register</h1>
+                    <h1 class="display-5 fw-bolder text-white mb-3 mt-3">Edit Profile</h1>
 
                         <div class="gap-3 justify-content-sm-center">
-                            <form method="POST" action="registerController">
+                            <form method="POST" action="editController">
                                 
                                 <div class="form-group row">
                                     <label for="username" class="col-md-4 col-form-label text-md-right mb-3">UserName</label>
 
                                     <div class="col-md-6">
-                                        <input id="username" type="text" class="form-control" name="username" required>
+                                        <input id="username" type="text" class="form-control" name="username" value="${sessionScope.u.getUserName()}"required>
 
                                     </div>
                                 </div>
@@ -71,7 +70,7 @@
                                     <label for="name" class="col-md-4 col-form-label text-md-right mb-3">Name</label>
 
                                     <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control" name="name"  required>
+                                        <input id="name" type="text" class="form-control" name="name" value="${sessionScope.u.getName()}"required>
 
                                     </div>
                                 </div>
@@ -80,7 +79,7 @@
                                     <label for="email" class="col-md-4 col-form-label text-md-right mb-3">E-Mail Address</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control" name="email"  required>
+                                        <input readonly id="email" type="email" class="form-control" name="email" value="${sessionScope.u.getEmail()}" required>
 
                                     </div>
                                 </div>
@@ -89,14 +88,14 @@
                                     <label for="password" class="col-md-4 col-form-label text-md-right mb-3">Password</label>
 
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control" name="password" required>
+                                        <input id="password" type="password" class="form-control" name="password" value="${sessionScope.u.getPassword()}"required>
 
                                     </div>
                                 </div> 
 
                                 <div class="mb-0">
                                     <button type="submit" class="btn btn-primary">
-                                            Register
+                                            Edit Profile
                                     </button>
                                 </div>
                             </form>
@@ -105,5 +104,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
     </body>
 </html>

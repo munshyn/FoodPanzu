@@ -30,10 +30,10 @@
             }
             .position-absolute{
                 position: absolute;
-                width: 1000px;
+                width: 800px;
                 height: 271px;
-                left: 72px;
-                top: 450px;
+                left: 30px;
+                top: 300px;
             }
             
             label{
