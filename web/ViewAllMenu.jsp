@@ -25,12 +25,12 @@
         <div class="container">
         <h1>View All Menu</h1>
         
-        <a class="btn btn-success" href="login.jsp">Insert New Menu</a>
+        <a class="btn btn-success" href="NewMenuForm.jsp">Insert New Menu</a>
         
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col">i</th>
+                    <th scope="col">No</th>
                     <th scope="col">ID</th>
                     <th scope="col">Food Name</th>
                     <th scope="col">Description</th>
@@ -46,7 +46,7 @@
             %>
             <tbody>
                 <tr>
-                    <th scope="row"><%=i%></th>
+                    <th scope="row"><%=i+1%></th>
                     <td><%=ul.get(i).getMenuCode()%></td>
                     <td><%=ul.get(i).getFdName()%><br><img src="<%=ul.get(i).getFdImage()%>" alt="Food Image" width="200" height="200"></td>
                     <td><%=ul.get(i).getFdDesc()%></td>
@@ -55,7 +55,7 @@
                     <td>
                         <form method="get" action="GetMenuController">
                         <input type="hidden" name="menuCode" value="<%=ul.get(i).getMenuCode()%>">
-                            <button type="submit" class="btn btn-primary">View</button>
+                            <button type="submit" class="btn btn-primary">Edit</button>
                         </form>
                     </td>
                     <td>
