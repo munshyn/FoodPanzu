@@ -26,12 +26,12 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "GetAllMenuController", urlPatterns = {"/GetAllMenuController"})
 public class GetAllMenuController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DMenu dao = new DAOImpl();
         List<Menu> ml = dao.getAllMenu();
         request.setAttribute("ml", ml);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        request.getRequestDispatcher("ViewAllMenu.jsp").forward(request, response);
         
     }
 
