@@ -13,49 +13,24 @@ import java.util.List;
  * @author User
  */
 public class Order implements Serializable {
-    private int orderId;
-    private List<Menu> menu;
-    private double totalPrice;
+    
     private int quantity;
+    private Menu menu;
 
     public Order() {
     }
 
-    public Order(int orderId, List<Menu> menu, double totalPrice, int quantity) {
-        this.orderId = orderId;
+    public Order(Menu menu, int quantity) {
         this.menu = menu;
-        this.totalPrice = totalPrice;
         this.quantity = quantity;
     }
 
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public List<Menu> getMenu() {
+    public Menu getMenu() {
         return menu;
     }
 
-    public void setMenu(List<Menu> menu) {
+    public void setMenu(Menu menu) {
         this.menu = menu;
-    }
-    
-    public void addOrder(Menu menu){
-        this.menu.add(menu);
-        quantity++;
-        totalPrice+=menu.getPrice();
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public int getQuantity() {

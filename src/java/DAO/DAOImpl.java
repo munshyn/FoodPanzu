@@ -70,8 +70,21 @@ public class DAOImpl implements DUser, DOrder, DMenu {
     }
 
     @Override
-    public void updateUser(String un) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateUser(User u) {
+        try{
+            String SQL= "Update user SET username=?,name=?,password=? WHERE email=?";
+            conn=DBUtility.DBConnection.openConnection();
+            ps=conn.prepareCall(SQL);
+            ps.setString(1,u.getUserName());
+            ps.setString(2,u.getName());
+            ps.setString(3,u.getPassword());
+            ps.setString(4,u.getEmail());
+            ps.executeUpdate();
+       
+        }
+        catch(Exception ex){
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     //Order DAO implementation

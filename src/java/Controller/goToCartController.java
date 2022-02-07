@@ -5,10 +5,7 @@
  */
 package Controller;
 
-import DAO.DAOImpl;
-import DAO.DMenu;
-import Model.Menu;
-import Model.User;
+import Model.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -23,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author User
  */
-@WebServlet(name = "homeController", urlPatterns = {"/homeController"})
-public class homeController extends HttpServlet {
+@WebServlet(name = "goToCartController", urlPatterns = {"/goToCartController"})
+public class goToCartController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,21 +37,27 @@ public class homeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession();
-            DMenu dao = new DAOImpl();
-            List<Menu> ml = dao.getAllMenu();
-            request.setAttribute("ml", ml);
-            
-            User u = (User) session.getAttribute("u");
-            
-            if(session == null)
-                response.sendRedirect("index.html");
-                
-            else if(u.isIsAdmin()==true)
-                request.getRequestDispatcher("managerDashboard.jsp").forward(request, response);
-            
-            else
-                request.getRequestDispatcher("home.jsp").forward(request, response);
+
+            HttpSession orderSession = request.getSession();
+
+            List<Order> o = (List<Order>) orderSession.getAttribute("o");
+            double totPrice = 0;
+            int qty = 0;
+
+            if (o != null) {
+                for (Order or : o) {
+                    for (int i = 0; i < or.getQuantity(); i++) {
+                        qty++;
+                        totPrice += or.getMenu().getPrice();
+                    }
+                }
+            }
+
+            request.setAttribute("qty", qty);
+            request.setAttribute("totPrice", totPrice);
+            orderSession.setAttribute("o", o);
+
+            request.getRequestDispatcher("cart.jsp").forward(request, response);
         }
     }
 

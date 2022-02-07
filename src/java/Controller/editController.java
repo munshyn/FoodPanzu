@@ -6,9 +6,8 @@
 package Controller;
 
 import DAO.DAOImpl;
-import DAO.DMenu;
-import Model.Menu;
-import Model.Order;
+import DAO.DUser;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,10 +19,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author User
+ * @author ACER
  */
-@WebServlet(name = "cartController", urlPatterns = {"/cartController"})
-public class cartController extends HttpServlet {
+@WebServlet(name = "editController", urlPatterns = {"/editController"})
+public class editController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,24 +33,39 @@ public class cartController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String username = request.getParameter("username");
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+
+            User u = new User(username, name, email, password, false);
+
+            DUser dao = new DAOImpl();
+            dao.updateUser(u);
+            HttpSession session = request.getSession();
+            session.setAttribute("u", u);
+            response.sendRedirect("profile.jsp");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int foodCode = Integer.parseInt(request.getParameter("foodCode"));
-        
-        DMenu dm = new DAOImpl();
-        Menu m = dm.getMenu(foodCode);
-        
-        HttpSession orderSession = request.getSession(true);
-        
-        Order o =(Order) orderSession.getAttribute("o");
-        
-        o.addOrder(m);
-        
-        orderSession.setAttribute("o", o);
-        
-        request.getRequestDispatcher("homeController").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -65,8 +79,7 @@ public class cartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+        processRequest(request, response);
     }
 
     /**

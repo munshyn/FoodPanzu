@@ -14,6 +14,6 @@ import Model.User;
 public interface DUser {
     public void register(User u);
     public User getUser(String un);
-    public void updateUser(String un);
+    public void updateUser(User u);
     
 }

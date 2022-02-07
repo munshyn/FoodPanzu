@@ -11,6 +11,8 @@ import Model.Order;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +46,7 @@ public class loginController extends HttpServlet {
 
         DUser dao = new DAOImpl();
         User u = dao.getUser(email);
-        Order o = new Order();
+        List<Order> o = new ArrayList<>();
 
         HttpSession session = request.getSession(true);
 
@@ -54,6 +56,8 @@ public class loginController extends HttpServlet {
             
             request.getRequestDispatcher("/homeController").include(request, response);
         } else {
+                        request.setAttribute("loginResult", "true");
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
             PrintWriter out = response.getWriter();
             out.println("<font color=red>Either user name or password is wrong.</font>");

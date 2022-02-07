@@ -46,8 +46,8 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="cart.jsp">
-                                Cart
+                            <a class="nav-link" href="goToCartController">
+                                Cart(${sessionScope.o.size()})
                                 <span class="caret"></span>
                             </a>
                         </li>

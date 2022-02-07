@@ -6,7 +6,6 @@
 
 <%@page import="Model.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Model.Menu"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
@@ -28,7 +27,7 @@
                     <div class="col-lg-12 col-md-12 col-12">
                         <h3 class="display-5 mb-2 text-center">Shopping Cart</h3>
                         <p class="mb-5 text-center">
-                            <i class="text-info font-weight-bold">${sessionScope.o.getQuantity()}</i> items in your cart</p>
+                            <i class="text-info font-weight-bold">${qty}</i> items in your cart</p>
                         <table id="shoppingCart" class="table table-condensed table-responsive">
                             <thead>
                                 <tr>
@@ -39,24 +38,24 @@
                                 </tr>
                             </thead>
                             <%
-                                Order o = (Order) session.getAttribute("o");
-                                List<Menu> ul = o.getMenu();
-                                for (int i = 0; i < ul.size(); i++) {
+                                List<Order> o = (List<Order>) session.getAttribute("o");
+                                if (o != null) {
+                                    for (int i = 0; i < o.size(); i++) {
                             %>
                             <tbody>
                                 <tr>
                                     <td data-th="Product">
                                         <div class="row">
                                             <div class="col-md-3 text-left">
-                                                <img src="<%=ul.get(i).getFdImage()%>" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                <img src="<%=o.get(i).getMenu().getFdImage()%>" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                                             </div>
                                             <div class="col-md-9 text-left mt-sm-2">
-                                                <h4>Product Name</h4>
-                                                <p class="font-weight-light"><%=ul.get(i).getFdName()%></p>
+                                                <h4><%=o.get(i).getMenu().getFdName()%></h4>
+                                                <p class="font-weight-light"><%=o.get(i).getMenu().getFdDesc()%></p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td data-th="Price">RM<%=ul.get(i).getPrice()%></td>
+                                    <td data-th="Price">RM<%=o.get(i).getMenu().getPrice()%></td>
                                     <td data-th="Quantity">
                                         <input type="number" class="form-control form-control-lg text-center" value="1">
                                     </td>
@@ -72,10 +71,27 @@
                                     </td>
                                 </tr>
                             </tbody>
+                            <%
+                                }
+                            } else {
+                            %>
+                            <tbody>
+                                <tr>
+                                    <td data-th="Product">
+                                        <div class="row">
+                                            
+                                            <div class="col-md-9 text-left mt-sm-2">
+                                                <h4>No items</h4>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <% } %>
                         </table>
                         <div class="float-right text-right">
                             <h4>Subtotal:</h4>
-                            <h1>${sessionScope.o.getTotalPrice()}</h1>
+                            <h1>${totPrice}</h1>
                         </div>
                     </div>
                 </div>
