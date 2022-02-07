@@ -17,7 +17,7 @@
         <link href="css/profile.css" rel="stylesheet">
 
         <title>Login Page</title>
-
+        
         <style>
             body{
                 background-image: url('https://img.wallpapersafari.com/desktop/1920/1080/41/10/o9vHAP.jpg');
@@ -27,7 +27,8 @@
         </style>
     </head>
     <body>
-  <div class="main-content">
+    <jsp:include page="header.jsp" />
+    <div class="main-content">
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
       <!-- Mask -->
@@ -59,8 +60,8 @@
             <div class="card-body">
               <form>
                 <h6 class="heading-small text-muted mb-4">User information</h6>
-                <div class="pl-lg-4">
-                    <div class="row">
+                <div class="pl-lg-4" >
+                    <div class="row" >
                         <div class="col-lg-6">
                             <div class="form-group focused">
                             <label class="form-control-label" for="input-username">Username</label>
