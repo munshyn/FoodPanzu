@@ -7,6 +7,7 @@ package Controller;
 
 import DAO.DAOImpl;
 import DAO.DUser;
+import Model.Order;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,11 +44,13 @@ public class loginController extends HttpServlet {
 
         DUser dao = new DAOImpl();
         User u = dao.getUser(email);
+        Order o = new Order();
 
         HttpSession session = request.getSession(true);
 
         if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
             session.setAttribute("u", u);
+            session.setAttribute("o", o);
             
             request.getRequestDispatcher("/homeController").include(request, response);
         } else {

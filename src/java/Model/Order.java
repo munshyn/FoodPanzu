@@ -43,6 +43,12 @@ public class Order implements Serializable {
     public void setMenu(List<Menu> menu) {
         this.menu = menu;
     }
+    
+    public void addOrder(Menu menu){
+        this.menu.add(menu);
+        quantity++;
+        totalPrice+=menu.getPrice();
+    }
 
     public double getTotalPrice() {
         return totalPrice;
