@@ -48,7 +48,7 @@
         </style>
     </head>
     <body>
-
+        <jsp:include page="header.jsp" />
         <div class="container">
             <div class="position-absolute glass">
                 <div class="text-center">

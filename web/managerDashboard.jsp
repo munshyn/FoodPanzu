@@ -1,7 +1,7 @@
 <%-- 
-    Document   : managerDashboard
-    Created on : Feb 6, 2022, 9:23:13 PM
-    Author     : syafi
+    Document   : newjsp
+    Created on : Feb 7, 2022, 4:50:55 PM
+    Author     : ACER
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,34 +9,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dashboard</title>
+        <link rel="stylesheet" href="css/style-main.css">
+        <title>JSP Page</title>
     </head>
     <body>
-            <jsp:include page="header.jsp" />
+        <jsp:include page="header.jsp" />
+      <div class="container-main">
+	<div class="middle"></div><!--background image here -->
+	<div class="welcome-text tracking-in-expand">
+		<p id="p1">WELCOME TO DASHBOARD PAGE </p>
+		<p id="p2">FOOD ORDERING SYSTEM</p>
+	</div>
 
-        <header class="bg-black py-5">
-            <div class="container px-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="text-center my-5">
-                            <h1 class="display-5 fw-bolder text-white mb-2">Manager Dashboard</h1>
-                            <p class="lead text-white-50 mb-4">Manage your restaurant</p>
-                            
-<!--                             <div class="mb-0">
-                                   
-                                    <a href="register.jsp" class="btn btn-success">
-                                        New User?
-                                    </a>
-                            </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-            
-                        <jsp:include page="ViewAllMenu.jsp" />
-
-            
-        
+	<div class="footer"></div><!-- footer here -->
+	
+	
+	<a href="#" class="box" id="box-1">
+		<img src="" alt="manage user" class="icon">
+		<p>Manage users</p>
+	</a>
+	<a href="GetAllMenuController" class="box" id="box-2">
+		<img src="" alt="view Menu" class="icon">
+		<p>View Menu</p> 
+	</a>
+	<a href="#" class="box" id="box-3">
+		<img src="" alt="view sale" class="icon"> 
+		<p>View Total Sale</p> 
+	</a>
+	</div><!-- container end -->  
     </body>
 </html>
