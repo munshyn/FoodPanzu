@@ -32,9 +32,9 @@
 		<img src="" alt="view Menu" class="icon">
 		<p>View Menu</p> 
 	</a>
-	<a href="#" class="box" id="box-3">
+	<a href="totalsales.jsp" class="box" id="box-3">
 		<img src="" alt="view sale" class="icon"> 
-		<p>View Total Sale</p> 
+		<p>View Total Sales</p> 
 	</a>
 	</div><!-- container end -->  
     </body>

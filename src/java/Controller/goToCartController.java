@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.lang.Math;
 
 /**
  *
@@ -46,12 +47,14 @@ public class goToCartController extends HttpServlet {
 
             if (o != null) {
                 for (Order or : o) {
-                    for (int i = 0; i < or.getQuantity(); i++) {
+//                    for (int i = 0; i < or.getQuantity(); i++) {
                         qty++;
                         totPrice += or.getMenu().getPrice();
-                    }
+//                    }
                 }
             }
+            
+            totPrice = Math.round(totPrice*100)/100;
 
             request.setAttribute("qty", qty);
             request.setAttribute("totPrice", totPrice);

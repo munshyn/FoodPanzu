@@ -6,7 +6,6 @@
 package Model;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
@@ -14,6 +13,7 @@ import java.util.List;
  */
 public class Order implements Serializable {
     
+    private String bookingId;
     private int quantity;
     private Menu menu;
 
@@ -23,6 +23,14 @@ public class Order implements Serializable {
     public Order(Menu menu, int quantity) {
         this.menu = menu;
         this.quantity = quantity;
+    }
+
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
     }
 
     public Menu getMenu() {

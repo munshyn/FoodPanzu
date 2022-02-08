@@ -18,7 +18,6 @@ public class User implements Serializable {
     private String password;
     private String email;
     private boolean isAdmin;
-    private List<Order> order;
 
     public User() {
         this.userName ="";
@@ -74,14 +73,5 @@ public class User implements Serializable {
 
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
-    }
-
-    public List<Order> getOrder() {
-        return order;
-    }
-
-    public void setOrder(List<Order> order) {
-        this.order = order;
-    }
-    
+    }    
 }

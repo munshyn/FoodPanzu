@@ -6,27 +6,27 @@
 package Controller;
 
 import DAO.DAOImpl;
-import DAO.DUser;
+import DAO.DMenu;
+import Model.Menu;
 import Model.Order;
-import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.lang.Math;
 
 /**
  *
  * @author User
  */
-@WebServlet(name = "loginController", urlPatterns = {"/loginController"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "checkoutController", urlPatterns = {"/checkoutController"})
+public class checkoutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,32 +40,32 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        /* TODO output your page here. You may use following sample code. */
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession orderSession = request.getSession();
 
-        DUser dao = new DAOImpl();
-        User u = dao.getUser(email);
-        List<Order> o = new ArrayList<>();
+            List<Order> o = (List<Order>) orderSession.getAttribute("o");
+            double Price = 0;
+            int qty = 0;
 
-        HttpSession session = request.getSession(true);
+            if (o != null) {
+                for (Order or : o) {
+                    qty++;
+                    Price += or.getMenu().getPrice();
+                }
+            }
 
-        if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
-            session.setAttribute("u", u);
-            session.setAttribute("o", o);
+            double totPrice = (double)Math.round(Price*100.00)/100.0;
 
-            request.getRequestDispatcher("/homeController").include(request, response);
-        } else {
-            request.setAttribute("loginResult", "true");
+            request.setAttribute("qty", qty);
+            request.setAttribute("totPrice", totPrice);
+            orderSession.setAttribute("o", o);
 
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            PrintWriter out = response.getWriter();
-            out.println("<font color=red>Either user name or password is wrong.</font>");
+            request.getRequestDispatcher("checkout.jsp").forward(request, response);
         }
-
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

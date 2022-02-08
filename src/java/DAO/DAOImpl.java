@@ -8,6 +8,7 @@ package DAO;
 import DBUtility.DBConnection;
 import Model.Menu;
 import Model.Order;
+import Model.Reservation;
 import Model.User;
 import static java.lang.System.out;
 import java.sql.Connection;
@@ -20,7 +21,7 @@ import java.util.List;
  *
  * @author User
  */
-public class DAOImpl implements DUser, DOrder, DMenu {
+public class DAOImpl implements DUser, DOrder, DMenu, DReservation {
 
     Connection conn;
     PreparedStatement ps;
@@ -71,54 +72,50 @@ public class DAOImpl implements DUser, DOrder, DMenu {
 
     @Override
     public void updateUser(User u) {
-        try{
-            String SQL= "Update user SET username=?,name=?,password=? WHERE email=?";
-            conn=DBUtility.DBConnection.openConnection();
-            ps=conn.prepareCall(SQL);
-            ps.setString(1,u.getUserName());
-            ps.setString(2,u.getName());
-            ps.setString(3,u.getPassword());
-            ps.setString(4,u.getEmail());
+        try {
+            String SQL = "Update user SET username=?,name=?,password=? WHERE email=?";
+            conn = DBUtility.DBConnection.openConnection();
+            ps = conn.prepareCall(SQL);
+            ps.setString(1, u.getUserName());
+            ps.setString(2, u.getName());
+            ps.setString(3, u.getPassword());
+            ps.setString(4, u.getEmail());
             ps.executeUpdate();
-       
+
+        } catch (Exception ex) {
         }
-        catch(Exception ex){
-        }
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     //Order DAO implementation
     @Override
-    public Order displayOrder() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void insertOrder(List<Order> o) {
+        for (Order or : o) {
+            try {
+                String SQL = "INSERT INTO orders (bookingid, foodname, quantity) values (?, ?, ?)";
+                conn = DBConnection.openConnection();
+                ps = conn.prepareStatement(SQL);
+                ps.setString(1, or.getBookingId());
+                ps.setString(2, or.getMenu().getFdName());
+                ps.setInt(3, or.getQuantity());
+                ps.executeUpdate();
 
-    @Override
-    public void insertOrder(Menu m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deleteOrder(String fdn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void updateOrder(String fdn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            } catch (Exception ex) {
+                ex.printStackTrace(out);
+            }
+        }
     }
 
     //Menu DAO implementation
     @Override
     public List<Menu> getAllMenu() {
         List<Menu> ul = new ArrayList<>();
-        try{
+        try {
             String SQL = "SELECT * FROM menu ORDER BY category";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
             rs = ps.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 Menu u = new Menu();
                 u.setMenuCode(rs.getInt("menuCode"));
                 u.setFdName(rs.getString("fdName"));
@@ -128,24 +125,24 @@ public class DAOImpl implements DUser, DOrder, DMenu {
                 u.setCategory(rs.getString("category"));
                 ul.add(u);
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace(out);
         }
-        
+
         return ul;
     }
 
     @Override
     public Menu getMenu(int mcd) {
         Menu u = new Menu();
-        try{
+        try {
             String SQL = "SELECT * FROM Menu WHERE menuCode=?";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
             ps.setInt(1, mcd);
             rs = ps.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 u.setMenuCode(rs.getInt("menuCode"));
                 u.setFdName(rs.getString("fdName"));
                 u.setFdDesc(rs.getString("fdDesc"));
@@ -153,16 +150,16 @@ public class DAOImpl implements DUser, DOrder, DMenu {
                 u.setPrice(rs.getDouble("price"));
                 u.setCategory(rs.getString("category"));
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace(out);
         }
-        
+
         return u;
     }
 
     @Override
     public void insertMenu(Menu m) {
-        try{
+        try {
             String SQL = "INSERT INTO menu (menuCode, fdName, fdDesc, fdImage, price, category) values (?, ?, ?, ?, ?, ?)";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
@@ -173,29 +170,29 @@ public class DAOImpl implements DUser, DOrder, DMenu {
             ps.setDouble(5, m.getPrice());
             ps.setString(6, m.getCategory());
             ps.executeUpdate();
-            
-        }catch (Exception ex){
+
+        } catch (Exception ex) {
             ex.printStackTrace(out);
-        }  
+        }
     }
 
     @Override
     public void deleteMenu(int mcd) {
-        try{
+        try {
             String SQL = "DELETE FROM menu WHERE menuCode=?";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
             ps.setInt(1, mcd);
             ps.executeUpdate();
-            
-        }catch (Exception ex){
+
+        } catch (Exception ex) {
             ex.printStackTrace(out);
         }
     }
 
     @Override
     public void updateMenu(int mcd, Menu m) {
-        try{
+        try {
             String SQL = "UPDATE menu SET fdName=?, fdDesc=?, fdImage=?, price=?, category=? WHERE menuCode=?";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
@@ -206,8 +203,26 @@ public class DAOImpl implements DUser, DOrder, DMenu {
             ps.setString(5, m.getCategory());
             ps.setInt(6, mcd);
             ps.executeUpdate();
-            
-        }catch (Exception ex){
+
+        } catch (Exception ex) {
+            ex.printStackTrace(out);
+        }
+    }
+
+    @Override
+    public void insertReservation(Reservation r) {
+        try {
+            String SQL = "INSERT INTO reservation (name, bookingid, reserveTable, person, price) values (?, ?, ?, ?, ?)";
+            conn = DBConnection.openConnection();
+            ps = conn.prepareStatement(SQL);
+            ps.setString(1, r.getUserName());
+            ps.setString(2, r.getBookingId());
+            ps.setInt(3, r.getReserveTable());
+            ps.setInt(4, r.getPerson());
+            ps.setDouble(5, r.getPrice());
+            ps.executeUpdate();
+
+        } catch (Exception ex) {
             ex.printStackTrace(out);
         }
     }

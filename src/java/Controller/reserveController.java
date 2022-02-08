@@ -6,27 +6,28 @@
 package Controller;
 
 import DAO.DAOImpl;
-import DAO.DUser;
+import DAO.DOrder;
+import DAO.DReservation;
 import Model.Order;
-import Model.User;
+import Model.Reservation;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.lang.Math;
+import java.util.ArrayList;
 
 /**
  *
  * @author User
  */
-@WebServlet(name = "loginController", urlPatterns = {"/loginController"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "reserveController", urlPatterns = {"/reserveController"})
+public class reserveController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,29 +41,39 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        /* TODO output your page here. You may use following sample code. */
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
-        DUser dao = new DAOImpl();
-        User u = dao.getUser(email);
-        List<Order> o = new ArrayList<>();
-
-        HttpSession session = request.getSession(true);
-
-        if (u.getEmail().equals(email) && u.getPassword().equals(password)) {
-            session.setAttribute("u", u);
-            session.setAttribute("o", o);
-
-            request.getRequestDispatcher("/homeController").include(request, response);
-        } else {
-            request.setAttribute("loginResult", "true");
-
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            PrintWriter out = response.getWriter();
-            out.println("<font color=red>Either user name or password is wrong.</font>");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String name = request.getParameter("name");
+            String bookingId = request.getParameter("bookingId");
+            int reserveTable = Integer.parseInt(request.getParameter("reserveTable"));
+            int person = Integer.parseInt(request.getParameter("person"));
+            
+            HttpSession orderSession = request.getSession(false);
+            
+            List<Order> o = (List<Order>) orderSession.getAttribute("o");
+            double totPrice = 0;
+            
+            for (Order or : o) {
+                or.setBookingId(bookingId);
+                totPrice += or.getMenu().getPrice();
+            }
+            
+            totPrice = Math.round(totPrice);
+            
+            DOrder dorder = new DAOImpl();
+            dorder.insertOrder(o);
+            
+            DReservation dreserve = new DAOImpl();
+            Reservation r = new Reservation(name, bookingId, reserveTable, person, totPrice);
+            
+            dreserve.insertReservation(r);
+            
+            request.setAttribute("r", r);
+            request.setAttribute("o", o);
+            List<Order> newOrder = new ArrayList<>();
+            orderSession.setAttribute("o", newOrder);
+            request.getRequestDispatcher("receipt.jsp").forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

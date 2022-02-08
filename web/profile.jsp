@@ -8,6 +8,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,7 +38,10 @@
       <div >
         <div style="margin-left:6%">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello ${sessionScope.u.getUserName()}</h1>
+            <h1 class="display-2 text-white">
+            <c:out value="Hello ${sessionScope.u.getUserName()}">
+            </c:out>
+            </h1>
             <p class="text-white mt-0 mb-5">This is your profile page. You can see the profile you have made in here and also edit your profile based on your preference</p>
             <a href="edit.jsp" class="btn btn-info">Edit profile</a>
           </div>
@@ -57,7 +61,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-white">
               <form>
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4" >
@@ -66,15 +70,14 @@
                             <div class="form-group focused">
                             <label class="form-control-label" for="input-username">Username</label>
                           <br>
-                            ${sessionScope.u.getUserName()}
-
+                             <c:out value="${sessionScope.u.getUserName()}"></c:out> 
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                             <label class="form-control-label" for="input-email">Email address</label>
                             <br>
-                            ${sessionScope.u.getEmail()}
+                             <c:out value="${sessionScope.u.getEmail()}"></c:out> 
                             </div>
                         </div>
                     </div>
@@ -83,7 +86,8 @@
                             <div class="form-group focused">
                             <label class="form-control-label" for="input-username">Name</label>
                           <br>
-                            ${sessionScope.u.getName()}
+                             <c:out value="${sessionScope.u.getName()}"></c:out> 
+                            
 
                             </div>
                         </div>
@@ -91,7 +95,7 @@
                             <div class="form-group">
                             <label class="form-control-label" for="input-email">Password</label>
                             <br>
-                            ${sessionScope.u.getPassword()}
+                             <c:out value="${sessionScope.u.getPassword()}"></c:out> 
                             </div>
                         </div>
                     </div>     

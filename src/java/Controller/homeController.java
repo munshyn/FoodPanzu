@@ -47,7 +47,7 @@ public class homeController extends HttpServlet {
             
             User u = (User) session.getAttribute("u");
             
-            if(session == null)
+            if(u == null)
                 response.sendRedirect("index.html");
                 
             else if(u.isIsAdmin()==true)

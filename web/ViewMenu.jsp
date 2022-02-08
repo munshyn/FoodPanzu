@@ -14,95 +14,107 @@
         <!--Fonts-->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-        
+
         <!--Styles-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
-        <title>Menu</title>
+        <link href="css/style.css" rel="stylesheet" />
+        <title>Edit Menu</title>
     </head>
     <body>
+        <jsp:include page="header.jsp" />
+        <header class="header-home py-5">
+            <div class="container px-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="text-center my-5 glass py-2">
+                            <h1 class="display-5 fw-bolder text-white mb-2">Manager Dashboard</h1>
+                            <p class="lead text-white-50">Edit Menu</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
         <div class="container">
-            
-        <form class="well form-horizontal" action="UpdateMenuController" method="get">
-                <fieldset>
+            <!--<div class="d-flex justify-content-center align-items-center mt-4">-->
+                <form class="well form-horizontal" action="UpdateMenuController" method="get">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Update Info</legend>
 
-                    <!-- Form Name -->
-                    <legend>Update Info</legend>
-                    
-                    <!-- Text input-->
-                    <input type="hidden" name="menuCode" value="${m.getMenuCode()}">
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Food name : </label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"></span>
-                                <input  name="fdName" placeholder="Food Name" class="form-control"  type="text" value="${m.getFdName()}">
+                        <!-- Text input-->
+                        <input type="hidden" name="menuCode" value="${m.getMenuCode()}">
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Food name : </label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input  name="fdName" placeholder="Food Name" class="form-control"  type="text" value="${m.getFdName()}">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- input-->
+                        <!-- input-->
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Food Description : </label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"></span>
-                                <input  name="fdDesc" placeholder="Food Description" class="form-control"  type="text" value="${m.getFdDesc()}">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Food Description : </label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input  name="fdDesc" placeholder="Food Description" class="form-control"  type="text" value="${m.getFdDesc()}">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- input-->
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Food Image : </label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"></span>
-                                <input  name="fdImage" placeholder="Food Image" class="form-control"  type="text" value="${m.getFdImage()}">
+                        <!-- input-->
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Food Image : </label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input  name="fdImage" placeholder="Food Image" class="form-control"  type="text" value="${m.getFdImage()}">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- input-->
+                        <!-- input-->
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Price : </label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input name="price" placeholder="Price" class="form-control" type="number" value="${m.getPrice()}">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Price : </label>  
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input name="price" placeholder="Price" class="form-control" type="number" value="${m.getPrice()}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!--input-->
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" >Category : </label> 
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"></span>
-                                <input name="category" placeholder="Category" class="form-control"  type="text" value="${m.getCategory()}">
+                        <!--input-->
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >Category : </label> 
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input name="category" placeholder="Category" class="form-control"  type="text" value="${m.getCategory()}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Button -->
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label"></label>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-success" >Update</button>
-                            <a class="btn btn-primary" href="homeController">Go back</a>
+
+                        <!-- Button -->
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-success" >Update</button>
+                                <a class="btn btn-primary" href="homeController">Go back</a>
+                            </div>
                         </div>
-                    </div>
-                </fieldset>
-        </form>
-                    
-        
+                    </fieldset>
+                </form>
+            <!--</div>-->
         </div>
     </body>
 </html>

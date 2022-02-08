@@ -3,6 +3,7 @@
     Created on : Dec 24, 2021, 10:52:43 PM
     Author     : User
 --%>
+<%@page import="Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
@@ -26,7 +27,7 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="homeController">
                     FoodPanzu
                 </a>
 
@@ -45,16 +46,21 @@
                             </a>
                         </li>
                         
+                        <%
+                            User u = (User)session.getAttribute("u");
+                            if(!u.isIsAdmin()){
+                        %>
                         <li class="nav-item">
                             <a class="nav-link" href="goToCartController">
                                 Cart(${sessionScope.o.size()})
                                 <span class="caret"></span>
                             </a>
                         </li>
+                        <% } %>
 
                         <li class="nav-item">
                             <a class="nav-link" href="profile.jsp">
-                                ${sessionScope.u.getUserName()}
+                                ${sessionScope.u.getName()}
                                 <span class="caret"></span>
                             </a>
                         </li>

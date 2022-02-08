@@ -5,14 +5,13 @@
  */
 package DAO;
 
-import Model.Menu;
-import Model.Order;
-import java.util.List;
+import Model.Reservation;
 
 /**
  *
  * @author User
  */
-public interface DOrder {
-    public void insertOrder(List<Order> o);
+public interface DReservation {
+    public void insertReservation(Reservation r);
+    
 }

@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="Model.Order"%>
+<%@page import="java.lang.Math"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -33,13 +34,12 @@
                                 <tr>
                                     <th style="width:60%">Product</th>
                                     <th style="width:12%">Price</th>
-                                    <th style="width:10%">Quantity</th>
                                     <th style="width:16%"></th>
                                 </tr>
                             </thead>
                             <%
                                 List<Order> o = (List<Order>) session.getAttribute("o");
-                                if (o != null) {
+                                if (o.size() != 0) {
                                     for (int i = 0; i < o.size(); i++) {
                             %>
                             <tbody>
@@ -56,17 +56,11 @@
                                         </div>
                                     </td>
                                     <td data-th="Price">RM<%=o.get(i).getMenu().getPrice()%></td>
-                                    <td data-th="Quantity">
-                                        <input type="number" class="form-control form-control-lg text-center" value="1">
-                                    </td>
                                     <td class="actions" data-th="">
                                         <div class="text-right">
-                                            <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                                <i class="fas fa-sync"></i>
-                                            </button>
-                                            <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+                                            <a href="deleteItemController?foodCode=<%=o.get(i).getMenu().getMenuCode()%>" class="btn btn-white border-secondary bg-white btn-md mb-2">
                                                 <i class="fas fa-trash"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -79,7 +73,6 @@
                                 <tr>
                                     <td data-th="Product">
                                         <div class="row">
-                                            
                                             <div class="col-md-9 text-left mt-sm-2">
                                                 <h4>No items</h4>
                                             </div>
@@ -87,11 +80,11 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            <% } %>
+                            <% }%>
                         </table>
                         <div class="float-right text-right">
                             <h4>Subtotal:</h4>
-                            <h1>${totPrice}</h1>
+                            <h1>RM${totPrice}</h1>
                         </div>
                     </div>
                 </div>
