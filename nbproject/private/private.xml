@@ -3,7 +3,38 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/receipt.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/cart.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/DAO/DOrder.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/reserveController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/registerController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/css/style.css</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Model/Reservation.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/css/style-main.css</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/profile.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Model/Order.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/goToCartController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/totalsales.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/ViewAllMenu.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/home.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/DAO/DReservation.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/GetAllMenuController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Model/User.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/managerMenu.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/NewMenuForm.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Model/Menu.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/header.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/managerDashboard.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/checkout.jsp</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/DAO/DAOImpl.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/viewTotalSaleController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/DAO/DMenu.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/checkoutController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/css/style-receipt.css</file>
             <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/addToCartController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/deleteItemController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/src/java/Controller/homeController.java</file>
+            <file>file:/F:/Husny/Docs/Sem5/IP/Project/FoodPanzu/web/css/style-total-sales.css</file>
         </group>
     </open-files>
 </project-private>

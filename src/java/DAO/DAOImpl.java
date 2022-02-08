@@ -227,4 +227,29 @@ public class DAOImpl implements DUser, DOrder, DMenu, DReservation {
         }
     }
 
+    @Override
+    public List<Reservation> getAllReservation() {
+        List<Reservation> rl = new ArrayList<>();
+        try {
+            String SQL = "SELECT * FROM reservation";
+            conn = DBConnection.openConnection();
+            ps = conn.prepareStatement(SQL);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Reservation r = new Reservation();
+                r.setUserName(rs.getString("name"));
+                r.setBookingId(rs.getString("bookingid"));
+                r.setReserveTable(rs.getInt("reserveTable"));
+                r.setPerson(rs.getInt("person"));
+                r.setPrice(rs.getDouble("price"));
+                rl.add(r);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace(out);
+        }
+
+        return rl;
+    }
+
 }

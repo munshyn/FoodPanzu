@@ -32,7 +32,7 @@
             <div class="container px-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
-                        <div class="text-center my-5">
+                        <div class="text-center my-5 glass">
                             <h1 class="display-5 fw-bolder text-white mb-2">MENU</h1>
                             <!--<p class="lead text-white-50 mb-4">Now you can just order your favourite food just by using our website. So, what are you waiting for? Start Ordering Now!!!</p>-->
                         </div>

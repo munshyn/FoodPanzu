@@ -22,17 +22,12 @@
 	</div>
 
 	<div class="footer"></div><!-- footer here -->
-	
-	
-	<a href="#" class="box" id="box-1">
-		<img src="" alt="manage user" class="icon">
-		<p>Manage users</p>
-	</a>
-	<a href="GetAllMenuController" class="box" id="box-2">
+
+	<a href="GetAllMenuController" class="box" id="box-1">
 		<img src="" alt="view Menu" class="icon">
 		<p>View Menu</p> 
 	</a>
-	<a href="totalsales.jsp" class="box" id="box-3">
+	<a href="viewTotalSaleController" class="box" id="box-2">
 		<img src="" alt="view sale" class="icon"> 
 		<p>View Total Sales</p> 
 	</a>

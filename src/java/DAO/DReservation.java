@@ -6,6 +6,7 @@
 package DAO;
 
 import Model.Reservation;
+import java.util.List;
 
 /**
  *
@@ -13,5 +14,6 @@ import Model.Reservation;
  */
 public interface DReservation {
     public void insertReservation(Reservation r);
+    public List<Reservation> getAllReservation();
     
 }
