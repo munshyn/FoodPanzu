@@ -42,12 +42,12 @@ public class editController extends HttpServlet {
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-
-            User u = new User(username, name, email, password, false);
+            HttpSession session = request.getSession();
+            User b=(User)session.getAttribute("u");
+            User u = new User(username, name, email, password, b.isIsAdmin());
 
             DUser dao = new DAOImpl();
             dao.updateUser(u);
-            HttpSession session = request.getSession();
             session.setAttribute("u", u);
             response.sendRedirect("profile.jsp");
         }
