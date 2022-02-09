@@ -24,12 +24,14 @@
 	<div class="footer"></div><!-- footer here -->
 
 	<a href="GetAllMenuController" class="box" id="box-1">
-		<img src="" alt="view Menu" class="icon">
-		<p>View Menu</p> 
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <h1 class="text-white"style="font-size:3em">View Menu</h1> 
+            </div>
 	</a>
 	<a href="viewTotalSaleController" class="box" id="box-2">
-		<img src="" alt="view sale" class="icon"> 
-		<p>View Total Sales</p> 
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <h1 class="text-white" style="font-size:3em">View Total Sales</h1> 
+            </div>
 	</a>
 	</div><!-- container end -->  
     </body>
