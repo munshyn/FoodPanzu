@@ -54,7 +54,7 @@ public class goToCartController extends HttpServlet {
                 }
             }
             
-            totPrice = Math.round(totPrice*100)/100;
+            totPrice =(double)Math.round(totPrice*100.0)/100.0;
 
             request.setAttribute("qty", qty);
             request.setAttribute("totPrice", totPrice);

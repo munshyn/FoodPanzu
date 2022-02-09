@@ -81,7 +81,7 @@
                         <div class="row gy-3">
                             <div class="col-md-6">
                                 <label for="reserveTable" class="form-label">Table Number</label>
-                                <input type="text" class="form-control" id="reserveTable" name="reserveTable" placeholder="" required>
+                                <input type="text" class="form-control" id="reserveTable" name="reserveTable" placeholder="Choose 1 to 7" required>
                                 <div class="invalid-feedback">
                                     Table Number
                                 </div>
