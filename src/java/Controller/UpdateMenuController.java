@@ -38,6 +38,8 @@ public class UpdateMenuController extends HttpServlet {
         DMenu dao = new DAOImpl();
         dao.updateMenu(menuCode, m);
         request.setAttribute("m", m);
+        request.setAttribute("updateMSuccess", "true");
+
         request.getRequestDispatcher("ViewMenu.jsp").forward(request, response);
     }
 
