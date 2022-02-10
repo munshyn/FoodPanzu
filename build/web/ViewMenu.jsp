@@ -20,8 +20,25 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
         <link href="css/style.css" rel="stylesheet" />
         <title>Edit Menu</title>
+        <script>
+
+            function updateSuccess() {
+                alert("Menu successfully updated");
+            }
+
+        </script>
+    
     </head>
     <body>
+
+        <%
+        if (request.getAttribute("updateMSuccess") == "true") {
+    %>
+    <script>
+        updateSuccess();
+    </script>
+    <% }%>
+
         <jsp:include page="header.jsp" />
         <header class="header-home py-5">
             <div class="container px-5">
@@ -43,14 +60,15 @@
                         <legend>Update Info</legend>
 
                         <!-- Text input-->
-                        <input type="hidden" name="menuCode" value="${m.getMenuCode()}">
+                        <jsp:useBean id="m"class="Model.Menu" scope="request"></jsp:useBean>
+                        <input type="hidden" name="menuCode" value="<jsp:getProperty name="m"property="menuCode"/>">
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Food name : </label>
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input  name="fdName" placeholder="Food Name" class="form-control"  type="text" value="${m.getFdName()}">
+                                    <input  name="fdName" placeholder="Food Name" class="form-control"  type="text" value="<jsp:getProperty name="m"property="fdName"/>">
                                 </div>
                             </div>
                         </div>
@@ -62,7 +80,7 @@
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input  name="fdDesc" placeholder="Food Description" class="form-control"  type="text" value="${m.getFdDesc()}">
+                                    <input  name="fdDesc" placeholder="Food Description" class="form-control"  type="text" value="<jsp:getProperty name="m"property="fdDesc"/>">
                                 </div>
                             </div>
                         </div>
@@ -74,7 +92,7 @@
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input  name="fdImage" placeholder="Food Image" class="form-control"  type="text" value="${m.getFdImage()}">
+                                    <input  name="fdImage" placeholder="Food Image" class="form-control"  type="text" value="<jsp:getProperty name="m"property="fdImage"/>">
                                 </div>
                             </div>
                         </div>
@@ -86,7 +104,7 @@
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                    <input name="price" placeholder="Price" class="form-control" type="number" value="${m.getPrice()}">
+                                    <input name="price" placeholder="Price" class="form-control" type="text" value="<jsp:getProperty name="m"property="price"/>">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +116,7 @@
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
-                                    <input name="category" placeholder="Category" class="form-control"  type="text" value="${m.getCategory()}">
+                                    <input name="category" placeholder="Category" class="form-control"  type="text" value="<jsp:getProperty name="m"property="category"/>">
                                 </div>
                             </div>
                         </div>
@@ -109,7 +127,7 @@
                             <label class="col-md-4 control-label"></label>
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-success" >Update</button>
-                                <a class="btn btn-primary" href="homeController">Go back</a>
+                                <a class="btn btn-primary" href="GetAllMenuController">Go back</a>
                             </div>
                         </div>
                     </fieldset>

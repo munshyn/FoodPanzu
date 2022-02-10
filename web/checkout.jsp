@@ -67,7 +67,7 @@
 
                             <div class="col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" value="${sessionScope.u.getEmail()}">
+                                <input type="email" class="form-control" id="email" value="${sessionScope.u.getEmail()}" required>
                                 <div class="invalid-feedback">
                                     Please enter a valid email address.
                                 </div>
@@ -89,7 +89,7 @@
 
                             <div class="col-md-6">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">How many of you are coming?</label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="person">
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="person" required>
                                     <option selected>Choose...</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>

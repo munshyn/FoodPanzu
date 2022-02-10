@@ -47,27 +47,26 @@ public class reserveController extends HttpServlet {
             String bookingId = request.getParameter("bookingId");
             int reserveTable = Integer.parseInt(request.getParameter("reserveTable"));
             int person = Integer.parseInt(request.getParameter("person"));
-            
+
             HttpSession orderSession = request.getSession(false);
-            
+
             List<Order> o = (List<Order>) orderSession.getAttribute("o");
-            double totPrice = 0;
-            
+            double Price = 0;
+
             for (Order or : o) {
                 or.setBookingId(bookingId);
-                totPrice += or.getMenu().getPrice();
+                Price += or.getMenu().getPrice();
             }
-            
-            totPrice = Math.round(totPrice);
-            
+
+            double totPrice = (double) Math.round(Price * 100.00) / 100.0;
             DOrder dorder = new DAOImpl();
             dorder.insertOrder(o);
-            
+
             DReservation dreserve = new DAOImpl();
             Reservation r = new Reservation(name, bookingId, reserveTable, person, totPrice);
-            
+
             dreserve.insertReservation(r);
-            
+
             request.setAttribute("r", r);
             request.setAttribute("o", o);
             List<Order> newOrder = new ArrayList<>();

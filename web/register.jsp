@@ -92,9 +92,13 @@
                                         <input id="password" type="password" class="form-control" name="password" required>
 
                                     </div>
-                                </div> 
-
+                                </div>
+                                
                                 <div class="mb-0">
+                                    <a href="login.jsp" class="btn btn-success">
+                                            Already a user?
+                                    </a>
+                                
                                     <button type="submit" class="btn btn-primary">
                                             Register
                                     </button>
